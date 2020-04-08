@@ -11,10 +11,7 @@ class LinkedList{
 private:
     Node *head, *tail;
 public:
-    LinkedList(){
-        head = NULL;
-        tail = NULL;
-    }
+    LinkedList();
     void createNode(int);
     void display();
     int getLength();
@@ -26,6 +23,11 @@ public:
     void deleteAtPosition(int pos);
 
 };
+
+LinkedList::LinkedList(){
+    head = NULL;
+    tail = NULL;
+}
 
 void LinkedList::createNode(int value){
     Node *temp = new Node;
@@ -115,6 +117,8 @@ void LinkedList::deleteAtPosition(int pos){
     }
     previous->next = current->next;
 }
+
+
 
 
 int main(){
