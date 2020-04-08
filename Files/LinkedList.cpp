@@ -16,11 +16,11 @@ public:
     void display();
     int getLength();
     void insertAtFirst(int);
-    void insertAtEnd(int);
+    void insertAtLast(int);
     void insertAtPosition(int, int);
-    void deleteFirst();
-    void deleteLast();
-    void deletePosition(int pos);
+    void deleteAtFirst();
+    void deleteAtLast();
+    void deleteAtPosition(int pos);
 
 };
 
@@ -68,7 +68,7 @@ void LinkedList::insertAtFirst(int value){
     temp->next = head;
     head = temp;
 }
-void LinkedList::insertAtEnd(int value){
+void LinkedList::insertAtLast(int value){
     Node *temp = new Node;
     temp->data = value;
     temp->next = NULL;
@@ -89,13 +89,13 @@ void LinkedList::insertAtPosition(int pos, int value){
     temp->next = current;
 }
 
-void LinkedList::deleteFirst(){
+void LinkedList::deleteAtFirst(){
     Node *temp = new Node;
     temp = head;
     head = head->next;
     delete temp;
 }
-void LinkedList::deleteLast(){
+void LinkedList::deleteAtLast(){
     Node *current = new Node;
     Node *previous = new Node;
     current = head;
@@ -107,7 +107,7 @@ void LinkedList::deleteLast(){
     previous->next = NULL;
     delete current;
 }
-void LinkedList::deletePosition(int pos){
+void LinkedList::deleteAtPosition(int pos){
     Node *current = new Node;
     Node *previous = new Node;
     current = head;
@@ -135,7 +135,7 @@ int main(){
     cout << "\n--------------------------------------------------\n";
     cout << "-----------------Inserting At End-----------------";
     cout << "\n--------------------------------------------------\n";
-    list.insertAtEnd(55);
+    list.insertAtLast(55);
     list.display();
     cout << endl << " ** Largo de la lista: " << list.getLength() << " ** " << endl << endl;
 
@@ -156,21 +156,21 @@ int main(){
     cout << "\n--------------------------------------------------\n";
     cout << "----------------Deleting At Start-----------------";
     cout << "\n--------------------------------------------------\n";
-    list.deleteFirst();
+    list.deleteAtFirst();
     list.display();
     cout << endl << " ** Largo de la lista: " << list.getLength() << " ** " << endl << endl;
 
     cout << "\n--------------------------------------------------\n";
     cout << "-----------------Deleting At End-------------------";
     cout << "\n--------------------------------------------------\n";
-    list.deleteLast();
+    list.deleteAtLast();
     list.display();
     cout << endl << " ** Largo de la lista: " << list.getLength() << " ** " << endl << endl;
 
     cout << "\n--------------------------------------------------\n";
     cout << "--------------Deleting At Particular--------------";
     cout << "\n--------------------------------------------------\n";
-    list.deletePosition(4);
+    list.deleteAtPosition(4);
     list.display();
     cout << endl << " ** Largo de la lista: " << list.getLength() << " ** " << endl << endl;
 
