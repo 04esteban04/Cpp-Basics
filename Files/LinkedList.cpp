@@ -2,33 +2,33 @@
 
 using namespace std;
 
-struct node{
+struct Node{
     int data;
-    node *next;
+    Node *next;
 };
 
-class list{
+class LinkedList{
 private:
-    node *head, *tail;
+    Node *head, *tail;
 public:
-    list(){
+    LinkedList(){
         head = NULL;
         tail = NULL;
     }
-    void createnode(int);
+    void createNode(int);
     void display();
-    int getLargo();
-    void insert_start(int);
-    void insert_end(int);
-    void insert_position(int, int);
-    void delete_first();
-    void delete_last();
-    void delete_position(int pos);
+    int getLength();
+    void insertAtFirst(int);
+    void insertAtEnd(int);
+    void insertAtPosition(int, int);
+    void deleteFirst();
+    void deleteLast();
+    void deleteAtPosition(int pos);
 
 };
 
-void list::createnode(int value){
-    node *temp = new node;
+void LinkedList::createNode(int value){
+    Node *temp = new Node;
     temp->data = value;
     temp->next = NULL;
     if(head == NULL){
@@ -41,16 +41,16 @@ void list::createnode(int value){
         tail = temp;
     }
 }
-void list::display(){
-    node *temp = new node;
+void LinkedList::display(){
+    Node *temp = new Node;
     temp = head;
     while(temp != NULL){
         cout<<temp->data<<"\t";
         temp = temp->next;
     }
 }
-int list::getLargo() {
-    node *temp = new node;
+int LinkedList::getLength() {
+    Node *temp = new Node;
     temp = head;
     int largo = 0;
     while(temp != NULL){
@@ -60,23 +60,23 @@ int list::getLargo() {
     return largo;
 }
 
-void list::insert_start(int value){
-    node *temp = new node;
+void LinkedList::insertAtFirst(int value){
+    Node *temp = new Node;
     temp->data = value;
     temp->next = head;
     head = temp;
 }
-void list::insert_end(int value){
-    node *temp = new node;
+void LinkedList::insertAtEnd(int value){
+    Node *temp = new Node;
     temp->data = value;
     temp->next = NULL;
     tail->next = temp;
     tail = temp;
 }
-void list::insert_position(int pos, int value){
-    node *pre = new node;
-    node *cur = new node;
-    node *temp = new node;
+void LinkedList::insertAtPosition(int pos, int value){
+    Node *pre = new Node;
+    Node *cur = new Node;
+    Node *temp = new Node;
     cur = head;
     for(int i = 1; i < pos; i++){
         pre = cur;
@@ -87,15 +87,15 @@ void list::insert_position(int pos, int value){
     temp->next = cur;
 }
 
-void list::delete_first(){
-    node *temp = new node;
+void LinkedList::deleteFirst(){
+    Node *temp = new Node;
     temp = head;
     head = head->next;
     delete temp;
 }
-void list::delete_last(){
-    node *current = new node;
-    node *previous = new node;
+void LinkedList::deleteLast(){
+    Node *current = new Node;
+    Node *previous = new Node;
     current = head;
     while(current->next != NULL){
         previous = current;
@@ -105,9 +105,9 @@ void list::delete_last(){
     previous->next = NULL;
     delete current;
 }
-void list::delete_position(int pos){
-    node *current = new node;
-    node *previous = new node;
+void LinkedList::deleteAtPosition(int pos){
+    Node *current = new Node;
+    Node *previous = new Node;
     current = head;
     for(int i = 1; i < pos; i++){
         previous = current;
@@ -118,59 +118,59 @@ void list::delete_position(int pos){
 
 
 int main(){
-    list obj;
-    obj.createnode(25);
-    obj.createnode(50);
-    obj.createnode(90);
-    obj.createnode(40);
+    LinkedList list;
+    list.createNode(25);
+    list.createNode(50);
+    list.createNode(90);
+    list.createNode(40);
 
     cout<<"\n--------------------------------------------------\n";
     cout<<"---------------Displaying All nodes---------------";
     cout<<"\n--------------------------------------------------\n";
-    obj.display();
-    cout << endl << " ** List length: " << obj.getLargo() << " ** "<< endl << endl;
+    list.display();
+    cout << endl << " ** Largo de la lista: " << list.getLength() << " ** " << endl << endl;
 
     cout<<"\n--------------------------------------------------\n";
     cout<<"-----------------Inserting At End-----------------";
     cout<<"\n--------------------------------------------------\n";
-    obj.insert_end(55);
-    obj.display();
-    cout << endl << " ** List length: " << obj.getLargo() << " ** "<< endl << endl;
+    list.insertAtEnd(55);
+    list.display();
+    cout << endl << " ** Largo de la lista: " << list.getLength() << " ** " << endl << endl;
 
     cout<<"\n--------------------------------------------------\n";
     cout<<"----------------Inserting At Start----------------";
     cout<<"\n--------------------------------------------------\n";
-    obj.insert_start(50);
-    obj.display();
-    cout << endl << " ** List length: " << obj.getLargo() << " ** "<< endl << endl;
+    list.insertAtFirst(50);
+    list.display();
+    cout << endl << " ** Largo de la lista: " << list.getLength() << " ** " << endl << endl;
 
     cout<<"\n--------------------------------------------------\n";
     cout<<"-------------Inserting At Particular--------------";
     cout<<"\n--------------------------------------------------\n";
-    obj.insert_position(5,60);
-    obj.display();
-    cout << endl << " ** List length: " << obj.getLargo() << " ** "<< endl << endl;
+    list.insertAtPosition(5, 60);
+    list.display();
+    cout << endl << " ** Largo de la lista: " << list.getLength() << " ** " << endl << endl;
 
     cout<<"\n--------------------------------------------------\n";
     cout<<"----------------Deleting At Start-----------------";
     cout<<"\n--------------------------------------------------\n";
-    obj.delete_first();
-    obj.display();
-    cout << endl << " ** List length: " << obj.getLargo() << " ** "<< endl << endl;
+    list.deleteFirst();
+    list.display();
+    cout << endl << " ** Largo de la lista: " << list.getLength() << " ** " << endl << endl;
 
     cout<<"\n--------------------------------------------------\n";
     cout<<"-----------------Deleting At End-------------------";
     cout<<"\n--------------------------------------------------\n";
-    obj.delete_last();
-    obj.display();
-    cout << endl << " ** List length: " << obj.getLargo() << " ** "<< endl << endl;
+    list.deleteLast();
+    list.display();
+    cout << endl << " ** Largo de la lista: " << list.getLength() << " ** " << endl << endl;
 
     cout<<"\n--------------------------------------------------\n";
     cout<<"--------------Deleting At Particular--------------";
     cout<<"\n--------------------------------------------------\n";
-    obj.delete_position(4);
-    obj.display();
-    cout << endl << " ** List length: " << obj.getLargo() << " ** "<< endl << endl;
+    list.deleteAtPosition(4);
+    list.display();
+    cout << endl << " ** Largo de la lista: " << list.getLength() << " ** " << endl << endl;
 
     cout<<"\n--------------------------------------------------\n";
 
